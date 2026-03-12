@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laura Marquina — Leadership & Performance Coach. Coaching de equipos, coaching ejecutivo y formaciones de liderazgo para scaleups y organizaciones.">
+    <title>Laura Marquina | Leadership & Performance Coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white:    #FFFFFF;
+            --off:      #F7F4F0;
+            --off2:     #EDE9E3;
+            --garnet:   #8C1A2E;
+            --garnet-d: #6B1222;
+            --garnet-l: #A8273E;
+            --gold:     #C4954A;
+            --gold-l:   #D9AE6E;
+            --gold-p:   #F5EDD9;
+            --ink:      #1A1714;
+            --ink-m:    #4A4540;
+            --ink-l:    #8A837B;
+            --border:   #E8E2D9;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 900;
+            padding: 1.3rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.35s;
+        }
+        nav.scrolled {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 5%;
+            box-shadow: 0 2px 24px rgba(26,20,14,0.06);
+        }
+        .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+        .logo-mark {
+            width: 42px; height: 42px; border-radius: 8px;
+            background: var(--garnet);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'DM Serif Display', serif; font-size: 1rem; color: #fff; letter-spacing: 0.02em;
+        }
+        .logo-name { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--ink); line-height: 1.2; }
+        .logo-sub  { font-size: 0.6rem; color: var(--garnet); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--ink-m); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.04em; transition: color 0.25s; font-weight: 500; }
+        .nav-links a:hover { color: var(--garnet); }
+        .nav-cta {
+            background: var(--garnet) !important; color: #fff !important;
+            padding: 0.55rem 1.4rem; border-radius: 6px; font-weight: 600 !important;
+            transition: background 0.25s !important;
+        }
+        .nav-cta:hover { background: var(--garnet-d) !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 901; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: 0.3s; }
+
+        /* ─── HERO ─── */
+        #hero {
+            min-height: 100vh; background: var(--white);
+            position: relative; display: flex; align-items: center; overflow: hidden;
+        }
+        .hero-bg-shape {
+            position: absolute; top: 0; right: 0; width: 52%; height: 100%;
+            background: var(--off);
+            clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .hero-accent-line {
+            position: absolute; top: 0; left: 5%; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, var(--garnet) 30%, var(--garnet) 70%, transparent 100%);
+            opacity: 0.12;
+        }
+
+        .hero-wrap {
+            width: 100%; max-width: 1380px; margin: 0 auto; padding: 0 5%;
+            display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem;
+            align-items: center; position: relative; z-index: 1; padding-top: 90px;
+        }
+        .hero-content { animation: fadeLeft 0.85s ease forwards; }
+
+        .hero-kicker {
+            display: inline-flex; align-items: center; gap: 0.7rem;
+            margin-bottom: 2rem;
+        }
+        .kicker-line { width: 32px; height: 2px; background: var(--garnet); }
+        .kicker-text { font-size: 0.72rem; color: var(--garnet); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+
+        .hero-h1 {
+            font-size: clamp(2.6rem, 4vw, 4rem);
+            line-height: 1.1; color: var(--ink); margin-bottom: 1.6rem;
+            font-style: italic;
+        }
+        .hero-h1 strong { font-style: normal; color: var(--garnet); }
+        .hero-h1 span { color: var(--gold); font-style: normal; }
+
+        .hero-p { font-size: 1.02rem; color: var(--ink-m); line-height: 1.8; margin-bottom: 2.5rem; max-width: 460px; font-weight: 300; }
+
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .hero-stats {
+            display: flex; gap: 2.5rem; margin-top: 3rem;
+            padding-top: 2rem; border-top: 1px solid var(--border);
+        }
+        .hs-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--garnet); line-height: 1; }
+        .hs-lbl { font-size: 0.7rem; color: var(--ink-l); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+        .hero-photo { position: relative; height: 660px; animation: fadeRight 0.85s ease 0.2s both; }
+        .hero-img {
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 90%; height: 95%; object-fit: cover; object-position: center top;
+        }
+        .hero-photo-frame {
+            position: absolute; bottom: 0; right: -1.5rem; width: 88%; height: 88%;
+            border: 1px solid var(--garnet); opacity: 0.18;
+        }
+        .hero-gold-dot {
+            position: absolute; top: 2rem; left: 0; width: 48px; height: 48px;
+            border-radius: 50%; background: var(--gold); opacity: 0.18;
+        }
+        .hero-garnet-bar {
+            position: absolute; bottom: 2.5rem; right: -1.5rem; width: 28px; height: 100px;
+            background: var(--garnet); opacity: 0.55;
+        }
+
+        .scroll-hint {
+            position: absolute; bottom: 2rem; left: 5%;
+            display: flex; align-items: center; gap: 0.8rem;
+            animation: fadeUp 1s ease 1.2s both;
+        }
+        .scroll-hint span { font-size: 0.65rem; color: var(--ink-l); letter-spacing: 0.2em; text-transform: uppercase; }
+        .scroll-line { width: 36px; height: 1px; background: var(--garnet); opacity: 0.5; }
+
+        /* ─── BUTTONS ─── */
+        .btn-garnet {
+            background: var(--garnet); color: #fff; padding: 0.9rem 2.2rem;
+            border: none; border-radius: 6px; font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; text-decoration: none; letter-spacing: 0.04em;
+            transition: all 0.25s; display: inline-block; font-family: 'DM Sans', sans-serif;
+        }
+        .btn-garnet:hover { background: var(--garnet-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(140,26,46,0.25); }
+        .btn-outline-g {
+            background: transparent; color: var(--garnet); padding: 0.9rem 2.2rem;
+            border: 1.5px solid var(--garnet); border-radius: 6px;
+            font-size: 0.88rem; font-weight: 500; cursor: pointer; text-decoration: none;
+            letter-spacing: 0.04em; transition: all 0.25s; display: inline-block; font-family: 'DM Sans', sans-serif;
+        }
+        .btn-outline-g:hover { background: var(--garnet); color: #fff; }
+        .btn-gold {
+            background: var(--gold); color: #fff; padding: 0.9rem 2.2rem;
+            border: none; border-radius: 6px; font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; text-decoration: none; letter-spacing: 0.04em;
+            transition: all 0.25s; display: inline-block; font-family: 'DM Sans', sans-serif;
+        }
+        .btn-gold:hover { background: var(--gold-l); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,149,74,0.28); }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 6rem 5%; }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        .s-kicker { display: inline-flex; align-items: center; gap: 0.65rem; margin-bottom: 1.1rem; }
+        .s-kicker-line { width: 28px; height: 2px; background: var(--garnet); }
+        .s-kicker-text { font-size: 0.68rem; color: var(--garnet); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+        .s-title { font-size: clamp(1.8rem, 2.8vw, 2.75rem); line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+        .s-title-w { color: #fff; }
+        .s-sub { font-size: 0.96rem; color: var(--ink-m); line-height: 1.8; max-width: 580px; font-weight: 300; }
+        .garnet-rule { width: 48px; height: 2px; background: var(--garnet); margin: 1.4rem 0; }
+        .garnet-rule-c { margin: 1.4rem auto; }
+        .gold-rule { width: 48px; height: 2px; background: var(--gold); margin: 1.4rem 0; }
+
+        /* ─── EL RETO ─── */
+        #reto { background: var(--off); }
+        .reto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; }
+        .reto-card {
+            background: var(--white); border-radius: 4px; padding: 2.5rem;
+            border-top: 3px solid var(--garnet);
+            box-shadow: 0 2px 16px rgba(26,20,14,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .reto-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(26,20,14,0.1); }
+        .reto-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+        .reto-card h3 { font-size: 1.22rem; color: var(--ink); margin-bottom: 0.7rem; }
+        .reto-card p { font-size: 0.88rem; color: var(--ink-m); line-height: 1.75; margin-bottom: 1.4rem; }
+        .pains { list-style: none; }
+        .pains li {
+            font-size: 0.85rem; color: var(--ink-m); padding: 0.42rem 0 0.42rem 1.3rem;
+            position: relative; border-bottom: 1px solid var(--border);
+        }
+        .pains li::before { content: '—'; color: var(--garnet); position: absolute; left: 0; font-weight: 700; }
+
+        /* ─── SERVICIOS ─── */
+        #servicios { background: var(--white); }
+        .serv-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4.5rem; }
+        .serv-img {
+            width: 100%; height: 360px; object-fit: cover; object-position: center 20%;
+            filter: grayscale(10%) contrast(1.03);
+        }
+        .serv-img-wrap {
+            position: relative;
+        }
+        .serv-img-wrap::before {
+            content: ''; position: absolute; top: -16px; left: -16px;
+            width: 80px; height: 80px;
+            border-top: 2px solid var(--garnet); border-left: 2px solid var(--garnet);
+            opacity: 0.5;
+        }
+        .serv-img-wrap::after {
+            content: ''; position: absolute; bottom: -16px; right: -16px;
+            width: 80px; height: 80px;
+            border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
+            opacity: 0.5;
+        }
+        .serv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+        .serv-card {
+            padding: 2.2rem; border: 1px solid var(--border); border-radius: 4px;
+            position: relative; overflow: hidden; transition: all 0.35s;
+            background: var(--white);
+        }
+        .serv-card::before {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--garnet), var(--gold));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .serv-card:hover { border-color: rgba(140,26,46,0.2); box-shadow: 0 8px 32px rgba(26,20,14,0.08); transform: translateY(-4px); }
+        .serv-card:hover::before { transform: scaleX(1); }
+        .serv-num { font-size: 0.65rem; color: var(--garnet); letter-spacing: 0.24em; text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; }
+        .serv-ico { font-size: 1.8rem; margin-bottom: 0.9rem; display: block; }
+        .serv-card h3 { font-size: 1.2rem; color: var(--ink); margin-bottom: 0.65rem; }
+        .serv-card p { font-size: 0.85rem; color: var(--ink-m); line-height: 1.72; margin-bottom: 1rem; }
+        .s-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+        .stag {
+            font-size: 0.63rem; padding: 0.2rem 0.6rem;
+            background: rgba(140,26,46,0.07); color: var(--garnet);
+            border: 1px solid rgba(140,26,46,0.18); border-radius: 3px;
+            letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+        }
+        .sbens { list-style: none; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .sbens li { font-size: 0.81rem; color: var(--ink-m); padding: 0.3rem 0 0.3rem 1.2rem; position: relative; }
+        .sbens li::before { content: '✓'; color: var(--gold); position: absolute; left: 0; font-size: 0.72rem; font-weight: 700; }
+
+        /* ─── SIMURG ─── */
+        #simurg { background: var(--garnet); position: relative; overflow: hidden; }
+        #simurg::before {
+            content: 'SIMURG'; position: absolute;
+            font-family: 'DM Serif Display', serif; font-size: 20rem; font-weight: 400;
+            color: rgba(255,255,255,0.04); top: 50%; left: 50%;
+            transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none;
+        }
+        .sw { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .simurg-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center; margin-bottom: 4rem; }
+        .simurg-brand {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px; padding: 3rem 2.5rem; text-align: center;
+        }
+        .sim-word {
+            font-family: 'DM Serif Display', serif; font-size: 4rem; color: var(--gold);
+            letter-spacing: 0.2em; line-height: 1;
+        }
+        .sim-rule { width: 56px; height: 1px; background: rgba(196,149,74,0.5); margin: 1.4rem auto; }
+        .sim-sub { font-size: 0.7rem; color: rgba(255,255,255,0.55); letter-spacing: 0.24em; text-transform: uppercase; }
+        .simurg-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+        .sc {
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px; padding: 1.7rem; transition: all 0.3s;
+        }
+        .sc:hover { background: rgba(255,255,255,0.11); border-color: rgba(196,149,74,0.4); }
+        .sc-hi { border-color: rgba(196,149,74,0.35); background: rgba(196,149,74,0.08); }
+        .sc-phase { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.65rem; font-weight: 700; }
+        .sc h4 { font-size: 1rem; color: #fff; margin-bottom: 0.5rem; font-family: 'DM Serif Display', serif; }
+        .sc p { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+        .simurg-foot {
+            margin-top: 3.5rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.15);
+            display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;
+        }
+        .sim-stats { display: flex; gap: 3rem; }
+        .ss-num { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--gold); line-height: 1; }
+        .ss-lbl { font-size: 0.68rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.35rem; }
+
+        /* ─── IA ─── */
+        #ia { background: var(--off); padding: 5.5rem 5%; }
+        .ia-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .ia-quote { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem,2.4vw,2.3rem); color: var(--ink); line-height: 1.4; font-style: italic; }
+        .ia-quote em { color: var(--garnet); font-style: inherit; }
+        .ia-p { font-size: 0.9rem; color: var(--ink-m); line-height: 1.8; margin-top: 1.5rem; }
+        .ia-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .ia-m {
+            background: var(--white); border: 1px solid var(--border); border-radius: 4px;
+            padding: 1.5rem; border-left: 3px solid var(--garnet); transition: all 0.3s;
+        }
+        .ia-m:hover { box-shadow: 0 6px 24px rgba(26,20,14,0.08); transform: translateY(-2px); }
+        .ia-num { font-family: 'DM Serif Display', serif; font-size: 2.1rem; color: var(--garnet); line-height: 1; }
+        .ia-desc { font-size: 0.78rem; color: var(--ink-m); margin-top: 0.4rem; line-height: 1.55; }
+
+        /* ─── SOBRE MÍ ─── */
+        #sobre-mi { background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+        .about-imgs { position: relative; }
+        .about-main { width: 100%; height: 560px; object-fit: cover; object-position: center top; display: block; filter: grayscale(8%) contrast(1.03); }
+        .about-main-frame {
+            position: relative;
+        }
+        .about-main-frame::after {
+            content: ''; position: absolute; top: 16px; left: 16px;
+            width: 100%; height: 100%; border: 1px solid var(--garnet); opacity: 0.2;
+            pointer-events: none;
+        }
+        .about-sec {
+            position: absolute; bottom: -30px; right: -25px; width: 46%; height: 200px;
+            object-fit: cover; object-position: center 15%;
+            border: 4px solid var(--white); box-shadow: 0 8px 32px rgba(26,20,14,0.14);
+        }
+        .about-gold-accent {
+            position: absolute; bottom: 40px; left: -12px; width: 24px; height: 80px;
+            background: var(--gold); opacity: 0.65;
+        }
+        .about-text { font-size: 0.93rem; color: var(--ink-m); line-height: 1.82; margin-bottom: 1.3rem; }
+        .about-pull {
+            font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-style: italic;
+            color: var(--ink); padding-left: 1.4rem; margin: 2rem 0; line-height: 1.6;
+            border-left: 3px solid var(--garnet);
+        }
+        .certs { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 2rem; }
+        .cert {
+            font-size: 0.7rem; padding: 0.3rem 0.75rem;
+            background: var(--off); color: var(--ink-m);
+            border: 1px solid var(--border); border-radius: 3px; font-weight: 500;
+        }
+
+        /* ─── PROCESO ─── */
+        #proceso { background: var(--off); }
+        .proc-head { text-align: center; max-width: 580px; margin: 0 auto 4.5rem; }
+        .proc-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 1.2rem; position: relative; }
+        .proc-steps::before {
+            content: ''; position: absolute; top: 25px; left: 9%; width: 82%; height: 1px;
+            background: linear-gradient(90deg, var(--garnet), var(--gold) 70%, transparent); z-index: 0; opacity: 0.3;
+        }
+        .proc-step { text-align: center; position: relative; z-index: 1; }
+        .proc-num {
+            width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #fff;
+            background: var(--garnet);
+        }
+        .proc-step h4 { font-size: 0.86rem; color: var(--ink); margin-bottom: 0.45rem; font-family: 'DM Sans', sans-serif; font-weight: 700; }
+        .proc-step p { font-size: 0.76rem; color: var(--ink-l); line-height: 1.55; }
+
+        /* ─── CONTACTO ─── */
+        #contacto { background: var(--white); }
+        .contact-head { text-align: center; max-width: 620px; margin: 0 auto 4.5rem; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 5rem; align-items: start; }
+        .contact-info h3 { font-size: 1.4rem; color: var(--ink); margin-bottom: 0.9rem; }
+        .contact-info > p { font-size: 0.9rem; color: var(--ink-m); line-height: 1.77; margin-bottom: 2rem; }
+        .c-detail { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem; }
+        .c-icon {
+            width: 36px; height: 36px; flex-shrink: 0;
+            background: rgba(140,26,46,0.07); border: 1px solid rgba(140,26,46,0.15);
+            border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+        }
+        .c-text { font-size: 0.86rem; color: var(--ink-m); }
+        .contact-photo { width: 100%; height: 250px; object-fit: cover; object-position: center 15%; margin-top: 2rem; filter: grayscale(15%); }
+
+        .contact-form {
+            background: var(--off); border-radius: 8px; padding: 2.8rem;
+            border: 1px solid var(--border);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .fg { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+        .fg label { font-size: 0.67rem; color: var(--garnet); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; }
+        .fg input, .fg select, .fg textarea {
+            padding: 0.78rem 1rem; border: 1px solid var(--border); border-radius: 5px;
+            font-family: 'DM Sans', sans-serif; font-size: 0.86rem; color: var(--ink);
+            background: var(--white); outline: none; transition: border-color 0.25s;
+        }
+        .fg input:focus, .fg select:focus, .fg textarea:focus {
+            border-color: var(--garnet); box-shadow: 0 0 0 3px rgba(140,26,46,0.08);
+        }
+        .fg textarea { resize: vertical; min-height: 115px; }
+        .form-submit {
+            width: 100%; padding: 1rem; background: var(--garnet); color: #fff;
+            border: none; border-radius: 6px; font-size: 0.88rem; font-weight: 700;
+            cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase;
+            transition: all 0.25s; margin-top: 0.5rem; font-family: 'DM Sans', sans-serif;
+        }
+        .form-submit:hover { background: var(--garnet-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(140,26,46,0.25); }
+        .form-note { font-size: 0.7rem; color: var(--ink-l); text-align: center; margin-top: 0.7rem; }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--ink); padding: 3.5rem 5%; text-align: center; }
+        .footer-in { max-width: 1200px; margin: 0 auto; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 0.85rem; margin-bottom: 1.8rem; }
+        .footer-logo .logo-name { color: #fff; }
+        .footer-logo .logo-sub { color: var(--gold); }
+        .footer-nav { display: flex; justify-content: center; gap: 2rem; list-style: none; flex-wrap: wrap; margin-bottom: 2rem; }
+        .footer-nav a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.25s; }
+        .footer-nav a:hover { color: var(--gold); }
+        .footer-rule { width: 40px; height: 1px; background: var(--garnet); margin: 0 auto 1.5rem; opacity: 0.5; }
+        .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+        /* ─── FLOAT CTA ─── */
+        .float-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 500; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .float-cta.show { opacity: 1; pointer-events: auto; }
+        .float-btn {
+            display: block; padding: 0.78rem 1.5rem; border-radius: 6px;
+            background: var(--garnet); color: #fff; font-size: 0.78rem; font-weight: 700;
+            text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase;
+            box-shadow: 0 4px 20px rgba(140,26,46,0.35); transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .float-btn:hover { background: var(--garnet-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(140,26,46,0.45); }
+
+        /* ─── SCROLL ANIM ─── */
+        .fi { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fi.on { opacity: 1; transform: translateY(0); }
+
+        /* ─── KEYFRAMES ─── */
+        @keyframes fadeLeft  { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes fadeRight { from{opacity:0;transform:translateX(30px)}  to{opacity:1;transform:translateX(0)} }
+        @keyframes fadeUp    { from{opacity:0;transform:translateY(18px)}  to{opacity:1;transform:translateY(0)} }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .simurg-head { grid-template-columns: 1fr; gap: 2.5rem; }
+            .simurg-cards { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 4rem 5%; }
+            #ia { padding: 4rem 5%; }
+            .hero-bg-shape { width: 100%; clip-path: none; top: auto; bottom: 0; height: 40%; }
+            .hero-wrap { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
+            .hero-photo { height: 360px; order: -1; }
+            .hero-stats { justify-content: center; }
+            .hero-ctas { justify-content: center; }
+            .hero-p { margin: 0 auto 2rem; }
+            .reto-grid, .serv-grid, .serv-header, .about-grid, .contact-grid, .ia-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+            .proc-steps { grid-template-columns: 1fr 1fr; }
+            .proc-steps::before { display: none; }
+            .simurg-cards { grid-template-columns: 1fr; }
+            .simurg-foot { flex-direction: column; align-items: flex-start; }
+            .ia-metrics { grid-template-columns: 1fr 1fr; }
+            .about-sec { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none; position: fixed; inset: 0;
+                background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+                flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.15rem; color: var(--ink); }
+            .hamburger { display: flex; }
+            .serv-header { grid-template-columns: 1fr; }
+            .hero-accent-line { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar">
+    <a href="#hero" class="nav-logo">
+        <div class="logo-mark">LM</div>
+        <div>
+            <div class="logo-name">Laura Marquina</div>
+            <div class="logo-sub">Leadership &amp; Performance Coach</div>
+        </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#reto">El Reto</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#simurg">SIMURG</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proceso">Metodología</a></li>
+        <li><a href="#contacto" class="nav-cta">Hablemos</a></li>
+    </ul>
+    <div class="hamburger" id="hbg" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-accent-line"></div>
+
+    <div class="hero-wrap">
+        <div class="hero-content">
+            <div class="hero-kicker">
+                <div class="kicker-line"></div>
+                <span class="kicker-text">Team &amp; Executive Coach · PNL Trainer · Firewalking</span>
+            </div>
+            <h1 class="hero-h1">
+                Equipos que rinden.<br>
+                Líderes que <strong>transforman.</strong><br>
+                Organizaciones que <span>escalan.</span>
+            </h1>
+            <p class="hero-p">
+                En la era de la inteligencia artificial, el verdadero diferenciador competitivo no es la tecnología. Es la capacidad humana de liderar, colaborar y rendir bajo presión. Yo te ayudo a construirla.
+            </p>
+            <div class="hero-ctas">
+                <a href="#contacto" class="btn-garnet">Solicitar sesión estratégica</a>
+                <a href="#servicios" class="btn-outline-g">Ver servicios</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="hs-num">6+</div>
+                    <div class="hs-lbl">Años como coach</div>
+                </div>
+                <div>
+                    <div class="hs-num">+200</div>
+                    <div class="hs-lbl">Profesionales impactados</div>
+                </div>
+                <div>
+                    <div class="hs-num">+30</div>
+                    <div class="hs-lbl">Empresas transformadas</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-photo">
+            <div class="hero-gold-dot"></div>
+            <div class="hero-photo-frame"></div>
+            <img src="Images/_MG_4404-Editar.jpg" alt="Laura Marquina — Leadership Coach" class="hero-img">
+            <div class="hero-garnet-bar"></div>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ══ EL RETO ══ -->
+<section id="reto">
+    <div class="wrap">
+        <div class="fi">
+            <div class="s-kicker"><div class="s-kicker-line"></div><span class="s-kicker-text">El reto actual</span></div>
+            <h2 class="s-title">¿Reconoces alguno de estos escenarios?</h2>
+            <div class="garnet-rule"></div>
+            <p class="s-sub">El crecimiento y la incertidumbre crean fricciones que ningún proceso operativo puede resolver por sí solo. Ahí es donde entra el trabajo humano.</p>
+        </div>
+        <div class="reto-grid">
+            <div class="reto-card fi">
+                <span class="reto-emoji">🚀</span>
+                <h3>Para Scaleups en Series B / C</h3>
+                <p>Tu empresa ha validado el modelo. Ahora toca escalar — y eso implica que las personas deben crecer al mismo ritmo que el negocio.</p>
+                <ul class="pains">
+                    <li>El equipo fundador ya no puede gestionar como antes: necesitas estructura de liderazgo real.</li>
+                    <li>La cultura que funcionó con 20 personas empieza a erosionarse cuando ya sois 100.</li>
+                    <li>Los managers son brillantes técnicamente pero no saben liderar personas.</li>
+                    <li>Los conflictos internos consumen energía que debería ir al crecimiento.</li>
+                    <li>La velocidad de decisión cae justo cuando más la necesitas.</li>
+                </ul>
+            </div>
+            <div class="reto-card fi">
+                <span class="reto-emoji">🏢</span>
+                <h3>Para Organizaciones Consolidadas</h3>
+                <p>Tienes estructura, recursos y mercado. El problema no es saber hacia dónde ir, es conseguir que las personas lleguen contigo.</p>
+                <ul class="pains">
+                    <li>Alta rotación de talento que no se explica solo con el salario.</li>
+                    <li>Departamentos que trabajan en silos y no colaboran de forma eficiente.</li>
+                    <li>Managers que gestionan tareas pero no desarrollan a sus equipos.</li>
+                    <li>Entornos de trabajo que generan estrés crónico y reducen la productividad.</li>
+                    <li>La IA llega y el equipo no sabe cómo adaptarse: resistencia, ansiedad, parálisis.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SERVICIOS ══ -->
+<section id="servicios">
+    <div class="wrap">
+        <div class="serv-header fi">
+            <div>
+                <div class="s-kicker"><div class="s-kicker-line"></div><span class="s-kicker-text">Lo que ofrezco</span></div>
+                <h2 class="s-title">Servicios diseñados para el alto rendimiento</h2>
+                <div class="garnet-rule"></div>
+                <p class="s-sub">Cada intervención está diseñada a medida. No hay programas de caja. Hay diagnóstico, diseño y acompañamiento real en el contexto de tu empresa.</p>
+            </div>
+            <div class="serv-img-wrap fi">
+                <img src="Images/_MG_4640-Mejorado-NR-Editar.jpg" alt="Laura Marquina" class="serv-img">
+            </div>
+        </div>
+        <div class="serv-grid">
+
+            <div class="serv-card fi">
+                <div class="serv-num">01</div>
+                <span class="serv-ico">◈</span>
+                <h3>Coaching de Equipos</h3>
+                <p>Acompaño a equipos a funcionar como un sistema de alto rendimiento. Trabajamos la cohesión, la confianza, los roles y la toma de decisión colectiva.</p>
+                <div class="s-tags"><span class="stag">Scaleups</span><span class="stag">Corporativo</span><span class="stag">C-Suite</span></div>
+                <ul class="sbens">
+                    <li>Equipos cohesionados que comunican y deciden con claridad</li>
+                    <li>Reducción de conflictos y reuniones improductivas</li>
+                    <li>Mayor velocidad de decisión y autonomía operativa</li>
+                    <li>Culturas que retienen y atraen talento de calidad</li>
+                </ul>
+            </div>
+
+            <div class="serv-card fi">
+                <div class="serv-num">02</div>
+                <span class="serv-ico">◇</span>
+                <h3>Coaching Ejecutivo</h3>
+                <p>Trabajo con CEOs, C-Levels y managers de alto potencial para desarrollar el liderazgo que necesitan ahora. El siguiente nivel exige una versión diferente de ti.</p>
+                <div class="s-tags"><span class="stag">1:1</span><span class="stag">C-Level</span><span class="stag">Managers</span></div>
+                <ul class="sbens">
+                    <li>Mayor claridad estratégica y gestión de la complejidad</li>
+                    <li>Inteligencia emocional en entornos de alta presión</li>
+                    <li>Comunicación ejecutiva de alto impacto</li>
+                    <li>Gestión del cambio y la incertidumbre desde la fortaleza</li>
+                </ul>
+            </div>
+
+            <div class="serv-card fi">
+                <div class="serv-num">03</div>
+                <span class="serv-ico">▣</span>
+                <h3>Workshops y Formaciones</h3>
+                <p>Programas in-company de Liderazgo, Gestión de Conflictos y Comunicación Efectiva. Para generar cambios reales de comportamiento, no solo conocimiento teórico.</p>
+                <div class="s-tags"><span class="stag">In-company</span><span class="stag">Liderazgo</span><span class="stag">Comunicación</span></div>
+                <ul class="sbens">
+                    <li>Líderes que inspiran, dirigen y dan feedback efectivo</li>
+                    <li>Equipos que convierten el conflicto en energía productiva</li>
+                    <li>Comunicación que alinea, motiva y genera compromisos reales</li>
+                    <li>Aplicación inmediata al puesto de trabajo</li>
+                </ul>
+            </div>
+
+            <div class="serv-card fi">
+                <div class="serv-num">04</div>
+                <span class="serv-ico">◉</span>
+                <h3>Dinámicas de Alto Impacto</h3>
+                <p>Experiencias transformadoras — incluyendo Firewalking — que generan cambios que ninguna formación convencional logra. Para equipos que quieren un salto real.</p>
+                <div class="s-tags"><span class="stag">Firewalking</span><span class="stag">Team Building</span><span class="stag">Outdoor</span></div>
+                <ul class="sbens">
+                    <li>Ruptura de creencias limitantes a nivel colectivo</li>
+                    <li>Experiencias de confianza que se trasladan al trabajo diario</li>
+                    <li>Conexión profunda entre los miembros del equipo</li>
+                    <li>Energía y compromiso renovados que perduran</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ SIMURG ══ -->
+<section id="simurg">
+    <div class="sw">
+        <div class="simurg-head">
+            <div class="fi">
+                <div class="s-kicker"><div class="s-kicker-line" style="background:#fff; opacity:0.4"></div><span class="s-kicker-text" style="color:var(--gold)">Programa Flagship</span></div>
+                <h2 class="s-title s-title-w">El programa para las scaleups<br>que quieren <em style="color:var(--gold-l)">escalar de verdad</em></h2>
+                <div class="gold-rule"></div>
+                <p class="s-sub" style="color:rgba(255,255,255,0.62)">SIMURG es un programa integral de 6 a 12 meses diseñado específicamente para empresas en fase de scale-up. No es una formación puntual. Es una transformación organizacional sostenida y acompañada con metodología propia.</p>
+                <br>
+                <a href="#contacto" class="btn-gold" style="margin-top:1.2rem">Conocer el programa SIMURG</a>
+            </div>
+            <div class="simurg-brand fi">
+                <div class="sim-word">SIMURG</div>
+                <div class="sim-rule"></div>
+                <div class="sim-sub">Programa Integral de Alto Rendimiento</div>
+                <div class="sim-rule"></div>
+                <div class="sim-sub" style="opacity:0.5;font-size:0.65rem">Transformación · Liderazgo · Impacto</div>
+            </div>
+        </div>
+
+        <div class="simurg-cards">
+            <div class="sc fi"><div class="sc-phase">Fase 01</div><h4>Diagnóstico Organizacional</h4><p>Análisis profundo del estado actual del equipo, la cultura y los procesos de liderazgo. Identificamos los frenos reales al crecimiento.</p></div>
+            <div class="sc fi"><div class="sc-phase">Fase 02</div><h4>Diseño del Programa</h4><p>Construimos un plan a medida con intervenciones específicas para los cuellos de botella identificados. Sin plantillas genéricas.</p></div>
+            <div class="sc fi"><div class="sc-phase">Fase 03</div><h4>Implementación y Acompañamiento</h4><p>Coaching de equipos, sesiones 1:1, workshops y dinámicas de alto impacto integrados en el ritmo real del negocio.</p></div>
+            <div class="sc fi"><div class="sc-phase">Fase 04</div><h4>Seguimiento y Ajuste</h4><p>Medición continua del impacto y ajuste del programa según la evolución real del equipo y el contexto de negocio.</p></div>
+            <div class="sc fi"><div class="sc-phase">Fase 05</div><h4>Transferencia y Autonomía</h4><p>El equipo interioriza las herramientas. Los líderes mantienen el alto rendimiento de forma autónoma al concluir el programa.</p></div>
+            <div class="sc sc-hi fi"><div class="sc-phase">Para quién es</div><h4>Scaleups Series B / C</h4><p>Empresas de +4 años con equipos de 50 a 500 personas que necesitan que sus personas escalen al mismo ritmo que el negocio.</p></div>
+        </div>
+
+        <div class="simurg-foot fi">
+            <div class="sim-stats">
+                <div><div class="ss-num">6–12</div><div class="ss-lbl">Meses de programa</div></div>
+                <div><div class="ss-num">100%</div><div class="ss-lbl">A medida</div></div>
+                <div><div class="ss-num">ROI</div><div class="ss-lbl">Medible y documentado</div></div>
+            </div>
+            <a href="#contacto" class="btn-gold">Solicitar información sobre SIMURG</a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ IA ERA ══ -->
+<section id="ia">
+    <div class="ia-wrap">
+        <div class="fi">
+            <div class="s-kicker"><div class="s-kicker-line"></div><span class="s-kicker-text">La era de la IA</span></div>
+            <div class="ia-quote">
+                "La IA <em>automatiza lo repetible.</em><br>
+                Lo que no puede automatizar<br>
+                es el liderazgo, la confianza<br>
+                y la <em>inteligencia colectiva.</em>"
+            </div>
+            <div class="garnet-rule" style="margin-top:2rem"></div>
+            <p class="ia-p">En un entorno donde la IA transforma industrias enteras, las empresas que lideran no son las que tienen la mejor tecnología. Son las que tienen equipos más cohesionados, líderes más resilientes y culturas más adaptables. La ventaja competitiva es, hoy más que nunca, profundamente humana.</p>
+        </div>
+        <div class="ia-metrics fi">
+            <div class="ia-m"><div class="ia-num">87%</div><div class="ia-desc">de los CEOs considera que las habilidades de liderazgo son el principal freno al crecimiento de su empresa</div></div>
+            <div class="ia-m"><div class="ia-num">3×</div><div class="ia-desc">más rentables son las empresas con culturas de alto rendimiento frente a sus competidores directos</div></div>
+            <div class="ia-m"><div class="ia-num">€34k</div><div class="ia-desc">es el coste medio de la rotación de un empleado mid-level en España (contratación, formación y productividad perdida)</div></div>
+            <div class="ia-m"><div class="ia-num">70%</div><div class="ia-desc">de las iniciativas de cambio fracasan por factores humanos, no por estrategia ni por tecnología</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SOBRE MÍ ══ -->
+<section id="sobre-mi">
+    <div class="wrap">
+        <div class="about-grid">
+            <div class="about-imgs fi">
+                <div class="about-main-frame">
+                    <img src="Images/_MG_4526-Editar.jpg" alt="Laura Marquina" class="about-main">
+                </div>
+                <div class="about-gold-accent"></div>
+            </div>
+            <div class="fi">
+                <div class="s-kicker"><div class="s-kicker-line"></div><span class="s-kicker-text">Sobre mí</span></div>
+                <h2 class="s-title">20 años en el mundo de la empresa. 6 como coach. La diferencia es que ahora ayudo a otros a recorrer ese camino.</h2>
+                <div class="garnet-rule"></div>
+                <p class="about-text">Empecé como economista cuantitativa. Pasé más de 15 años liderando equipos en Operations, Business Development y Product Management en compañías de alto crecimiento. Sé lo que es escalar, fracasar, pivotar y volver a levantarse.</p>
+                <p class="about-text">Hace 6 años decidí que el mayor impacto que podía generar era ayudar a otros líderes y equipos a rendir mejor — a construir entornos donde las personas den lo mejor de sí mismas y eso se traduzca en resultados reales para el negocio.</p>
+                <div class="about-pull">"No vengo del coaching teórico. Vengo del mundo real de las empresas. Eso cambia la conversación."</div>
+                <p class="about-text">Soy Trainer certificada en Programación Neurolingüística, Instructora de Firewalking, especialista en Inteligencia Emocional y Coach Estratégico. Una combinación diseñada para producir resultados, no solo insights.</p>
+                <div class="certs">
+                    <span class="cert">Master Coach &amp; Trainer PNL — Meta International Inc.</span>
+                    <span class="cert">Firewalking Instructor — F.I.T.</span>
+                    <span class="cert">Inteligencia Emocional</span>
+                    <span class="cert">Coaching Estratégico</span>
+                    <span class="cert">Master Coaching &amp; IE — U. Politécnica Cartagena</span>
+                    <span class="cert">Economista Cuantitativa — UCM</span>
+                    <span class="cert">ES · EN · DE · CAT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PROCESO ══ -->
+<section id="proceso">
+    <div class="wrap">
+        <div class="proc-head fi">
+            <div class="s-kicker" style="justify-content:center"><div class="s-kicker-line"></div><span class="s-kicker-text">Metodología</span></div>
+            <h2 class="s-title">Cómo trabajo</h2>
+            <div class="garnet-rule garnet-rule-c"></div>
+            <p class="s-sub" style="margin:0 auto;text-align:center">Un proceso riguroso que garantiza que cada intervención genera resultados reales, medibles y sostenibles en el tiempo.</p>
+        </div>
+        <div class="proc-steps">
+            <div class="proc-step fi"><div class="proc-num">01</div><h4>Diagnóstico</h4><p>Entendemos el estado real del equipo: dinámicas, fricciones, potencial y contexto de negocio.</p></div>
+            <div class="proc-step fi"><div class="proc-num">02</div><h4>Diseño</h4><p>Construimos un plan a medida con objetivos claros, indicadores de éxito y calendario realista.</p></div>
+            <div class="proc-step fi"><div class="proc-num">03</div><h4>Implementación</h4><p>Ejecutamos las intervenciones: coaching, workshops, dinámicas de alto impacto y sesiones 1:1.</p></div>
+            <div class="proc-step fi"><div class="proc-num">04</div><h4>Medición</h4><p>Evaluamos el impacto de forma continua y ajustamos el programa para maximizar resultados.</p></div>
+            <div class="proc-step fi"><div class="proc-num">05</div><h4>Autonomía</h4><p>El equipo interioriza las herramientas y mantiene el alto rendimiento de forma independiente.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACTO ══ -->
+<section id="contacto">
+    <div class="wrap">
+        <div class="contact-head fi">
+            <div class="s-kicker" style="justify-content:center"><div class="s-kicker-line"></div><span class="s-kicker-text">Contacto</span></div>
+            <h2 class="s-title">¿Listo para dar el siguiente paso?</h2>
+            <div class="garnet-rule garnet-rule-c"></div>
+            <p class="s-sub" style="margin:0 auto;text-align:center">Una sesión estratégica de 45 minutos para entender tu reto y explorar si podemos trabajar juntos. Sin compromiso.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="fi">
+                <img src="Images/_MG_4495-Editar.jpg" alt="Laura Marquina" class="contact-photo" style="margin-top:0; height:100%; min-height:520px; width:100%; object-fit:cover; object-position:center 15%;">
+            </div>
+            <div class="fi">
+                <form class="contact-form" onsubmit="handleForm(event)">
+                    <div class="form-row">
+                        <div class="fg" style="margin-bottom:0"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+                        <div class="fg" style="margin-bottom:0"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="fg" style="margin-bottom:0"><label>Email</label><input type="email" placeholder="tu@empresa.com" required></div>
+                        <div class="fg" style="margin-bottom:0"><label>Teléfono</label><input type="tel" placeholder="+34 6XX XXX XXX"></div>
+                    </div>
+                    <div class="fg">
+                        <label>¿Qué servicio te interesa?</label>
+                        <select>
+                            <option value="">Selecciona una opción</option>
+                            <option>Coaching de Equipos</option>
+                            <option>Coaching Ejecutivo</option>
+                            <option>Workshop / Formación In-Company</option>
+                            <option>Dinámica de Alto Impacto (Firewalking)</option>
+                            <option>Programa SIMURG (Scaleups)</option>
+                            <option>No lo sé aún — quiero una sesión exploratoria</option>
+                        </select>
+                    </div>
+                    <div class="fg">
+                        <label>Cuéntame tu reto</label>
+                        <textarea placeholder="¿Cuál es la situación de tu equipo hoy? ¿Qué quieres conseguir?"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit" id="formBtn">Solicitar sesión estratégica gratuita</button>
+                    <p class="form-note">Sin compromiso · Respondo en menos de 24h</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-in">
+        <div class="footer-logo">
+            <div class="logo-mark">LM</div>
+            <div>
+                <div class="logo-name" style="color:#fff">Laura Marquina</div>
+                <div class="logo-sub" style="color:var(--gold)">Leadership &amp; Performance Coach</div>
+            </div>
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#reto">El Reto</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#simurg">SIMURG</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#proceso">Metodología</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="footer-rule"></div>
+        <p class="footer-copy">© 2026 Laura Marquina Coaching · Todos los derechos reservados</p>
+    </div>
+</footer>
+
+<div class="float-cta" id="floatCta">
+    <a href="#contacto" class="float-btn">Hablemos →</a>
+</div>
+
+<script>
+    const nav = document.getElementById('navbar');
+    const fc  = document.getElementById('floatCta');
+
+    window.addEventListener('scroll', () => {
+        const s = window.scrollY > 80;
+        nav.classList.toggle('scrolled', s);
+        fc.classList.toggle('show', s);
+        let cur = '';
+        document.querySelectorAll('section[id]').forEach(sec => {
+            if (window.scrollY >= sec.offsetTop - 110) cur = sec.id;
+        });
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.style.color = (a.getAttribute('href') === `#${cur}`) ? 'var(--garnet)' : '';
+        });
+    });
+
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    document.querySelectorAll('.nav-links a').forEach(a =>
+        a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+    );
+
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('on'), i * 70);
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+    function handleForm(e) {
+        e.preventDefault();
+        const btn = document.getElementById('formBtn');
+        btn.textContent = '✓ Mensaje enviado — Te contacto en menos de 24h';
+        btn.style.background = '#1a5c3a';
+        btn.disabled = true;
+    }
+</script>
+</body>
+</html>
