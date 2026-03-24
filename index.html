@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Laura Marquina — Leadership & Performance Coach. Coaching de equipos, coaching ejecutivo y formaciones de liderazgo para scaleups y organizaciones.">
+    <meta name="description" content="Laura Marquina — Leadership & Performance Coach. Coaching de equipos, coaching ejecutivo y formaciones de liderazgo para scaleups y organizaciones en la era de la IA.">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Laura Marquina | Leadership & Performance Coach</title>
+    <link rel="canonical" href="https://www.lauramarquina.com/">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lauramarquina.com/">
+    <meta property="og:title" content="Laura Marquina | Leadership & Performance Coach">
+    <meta property="og:description" content="Coaching de equipos, coaching ejecutivo y formaciones de liderazgo para scaleups y organizaciones en la era de la IA.">
+    <meta property="og:image" content="https://www.lauramarquina.com/Images/_MG_4404-Editar.jpg">
+    <meta property="og:locale" content="es_ES">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laura Marquina | Leadership & Performance Coach">
+    <meta name="twitter:description" content="Coaching de equipos, coaching ejecutivo y formaciones de liderazgo para scaleups y organizaciones.">
+    <meta name="twitter:image" content="https://www.lauramarquina.com/Images/_MG_4404-Editar.jpg">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="Images/_MG_4404-Editar.jpg">
     <style>
         :root {
             --white:    #FFFFFF;
@@ -62,7 +80,7 @@
             transition: background 0.25s !important;
         }
         .nav-cta:hover { background: var(--garnet-d) !important; }
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 901; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 901; background: none; border: none; padding: 0; }
         .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: 0.3s; }
 
         /* ─── HERO ─── */
@@ -427,6 +445,21 @@
         @keyframes fadeRight { from{opacity:0;transform:translateX(30px)}  to{opacity:1;transform:translateX(0)} }
         @keyframes fadeUp    { from{opacity:0;transform:translateY(18px)}  to{opacity:1;transform:translateY(0)} }
 
+        /* ─── UTILITY ─── */
+        .s-kicker-c                { justify-content: center; }
+        .s-sub-c                   { margin: 0 auto; text-align: center; }
+        .kicker-text-gold          { color: var(--gold); }
+        #simurg .s-title em        { color: var(--gold-l); font-style: inherit; }
+        #simurg .s-sub             { color: rgba(255,255,255,0.62); }
+        #simurg .btn-gold          { margin-top: 1.2rem; display: inline-block; }
+        #simurg .sim-sub.muted     { opacity: 0.5; font-size: 0.65rem; }
+        .garnet-rule-mt            { margin-top: 2rem; }
+        .form-row .fg              { margin-bottom: 0; }
+        .contact-photo-full {
+            margin-top: 0; height: 100%; min-height: 520px;
+            width: 100%; object-fit: cover; object-position: center 15%;
+        }
+
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .simurg-head { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -461,6 +494,24 @@
             .hero-accent-line { display: none; }
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Laura Marquina",
+      "jobTitle": "Leadership & Performance Coach",
+      "description": "Coaching de equipos, coaching ejecutivo y formaciones de liderazgo para scaleups y organizaciones.",
+      "url": "https://www.lauramarquina.com",
+      "image": "https://www.lauramarquina.com/Images/_MG_4404-Editar.jpg",
+      "knowsAbout": ["Leadership Coaching", "Team Coaching", "Executive Coaching", "Firewalking", "PNL", "Inteligencia Emocional"],
+      "knowsLanguage": ["es", "en", "de", "ca"],
+      "hasCredential": [
+        {"@type": "EducationalOccupationalCredential", "name": "Master Coach & Trainer PNL — Meta International Inc."},
+        {"@type": "EducationalOccupationalCredential", "name": "Firewalking Instructor — F.I.T."},
+        {"@type": "EducationalOccupationalCredential", "name": "Master Coaching & IE — Universidad Politécnica de Cartagena"}
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -481,9 +532,9 @@
         <li><a href="#proceso">Metodología</a></li>
         <li><a href="#contacto" class="nav-cta">Hablemos</a></li>
     </ul>
-    <div class="hamburger" id="hbg" onclick="toggleMenu()">
+    <button class="hamburger" id="hbg" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
-    </div>
+    </button>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -528,7 +579,7 @@
         <div class="hero-photo">
             <div class="hero-gold-dot"></div>
             <div class="hero-photo-frame"></div>
-            <img src="https://www.lauramarquina.com/Images/_MG_4404-Editar.jpg" alt="Laura Marquina — Leadership Coach" class="hero-img">
+            <img src="Images/_MG_4404-Editar.jpg" alt="Laura Marquina — Leadership Coach" class="hero-img" loading="eager" fetchpriority="high" width="600" height="627">
             <div class="hero-garnet-bar"></div>
         </div>
     </div>
@@ -588,7 +639,7 @@
                 <p class="s-sub">Cada intervención está diseñada a medida. No hay programas de caja. Hay diagnóstico, diseño y acompañamiento real en el contexto de tu empresa.</p>
             </div>
             <div class="serv-img-wrap fi">
-                <img src="https://www.lauramarquina.com/Images/_MG_4640-Mejorado-NR-Editar.jpg" alt="Laura Marquina" class="serv-img">
+                <img src="Images/_MG_4640-Mejorado-NR-Editar.jpg" alt="Laura Marquina en sesión de coaching" class="serv-img" loading="lazy" width="600" height="360">
             </div>
         </div>
         <div class="serv-grid">
@@ -658,19 +709,18 @@
     <div class="sw">
         <div class="simurg-head">
             <div class="fi">
-                <div class="s-kicker"><div class="s-kicker-line" style="background:#fff; opacity:0.4"></div><span class="s-kicker-text" style="color:var(--gold)">Programa Flagship</span></div>
-                <h2 class="s-title s-title-w">El programa para las scaleups<br>que quieren <em style="color:var(--gold-l)">escalar de verdad</em></h2>
+                <div class="s-kicker"><div class="s-kicker-line" style="background:#fff; opacity:0.4"></div><span class="s-kicker-text kicker-text-gold">Programa Flagship</span></div>
+                <h2 class="s-title s-title-w">El programa para las scaleups<br>que quieren <em>escalar de verdad</em></h2>
                 <div class="gold-rule"></div>
-                <p class="s-sub" style="color:rgba(255,255,255,0.62)">SIMURG es un programa integral de 6 a 12 meses diseñado específicamente para empresas en fase de scale-up. No es una formación puntual. Es una transformación organizacional sostenida y acompañada con metodología propia.</p>
-                <br>
-                <a href="#contacto" class="btn-gold" style="margin-top:1.2rem">Conocer el programa SIMURG</a>
+                <p class="s-sub">SIMURG es un programa integral de 6 a 12 meses diseñado específicamente para empresas en fase de scale-up. No es una formación puntual. Es una transformación organizacional sostenida y acompañada con metodología propia.</p>
+                <a href="#contacto" class="btn-gold">Conocer el programa SIMURG</a>
             </div>
             <div class="simurg-brand fi">
                 <div class="sim-word">SIMURG</div>
                 <div class="sim-rule"></div>
                 <div class="sim-sub">Programa Integral de Alto Rendimiento</div>
                 <div class="sim-rule"></div>
-                <div class="sim-sub" style="opacity:0.5;font-size:0.65rem">Transformación · Liderazgo · Impacto</div>
+                <div class="sim-sub muted">Transformación · Liderazgo · Impacto</div>
             </div>
         </div>
 
@@ -705,7 +755,7 @@
                 es el liderazgo, la confianza<br>
                 y la <em>inteligencia colectiva.</em>"
             </div>
-            <div class="garnet-rule" style="margin-top:2rem"></div>
+            <div class="garnet-rule garnet-rule-mt"></div>
             <p class="ia-p">En un entorno donde la IA transforma industrias enteras, las empresas que lideran no son las que tienen la mejor tecnología. Son las que tienen equipos más cohesionados, líderes más resilientes y culturas más adaptables. La ventaja competitiva es, hoy más que nunca, profundamente humana.</p>
         </div>
         <div class="ia-metrics fi">
@@ -723,7 +773,7 @@
         <div class="about-grid">
             <div class="about-imgs fi">
                 <div class="about-main-frame">
-                    <img src="https://www.lauramarquina.com/Images/_MG_4526-Editar.jpg" alt="Laura Marquina" class="about-main">
+                    <img src="Images/_MG_4526-Editar.jpg" alt="Laura Marquina, coach de liderazgo" class="about-main" loading="lazy" width="600" height="560">
                 </div>
                 <div class="about-gold-accent"></div>
             </div>
@@ -753,10 +803,10 @@
 <section id="proceso">
     <div class="wrap">
         <div class="proc-head fi">
-            <div class="s-kicker" style="justify-content:center"><div class="s-kicker-line"></div><span class="s-kicker-text">Metodología</span></div>
+            <div class="s-kicker s-kicker-c"><div class="s-kicker-line"></div><span class="s-kicker-text">Metodología</span></div>
             <h2 class="s-title">Cómo trabajo</h2>
             <div class="garnet-rule garnet-rule-c"></div>
-            <p class="s-sub" style="margin:0 auto;text-align:center">Un proceso riguroso que garantiza que cada intervención genera resultados reales, medibles y sostenibles en el tiempo.</p>
+            <p class="s-sub s-sub-c">Un proceso riguroso que garantiza que cada intervención genera resultados reales, medibles y sostenibles en el tiempo.</p>
         </div>
         <div class="proc-steps">
             <div class="proc-step fi"><div class="proc-num">01</div><h4>Diagnóstico</h4><p>Entendemos el estado real del equipo: dinámicas, fricciones, potencial y contexto de negocio.</p></div>
@@ -772,40 +822,41 @@
 <section id="contacto">
     <div class="wrap">
         <div class="contact-head fi">
-            <div class="s-kicker" style="justify-content:center"><div class="s-kicker-line"></div><span class="s-kicker-text">Contacto</span></div>
+            <div class="s-kicker s-kicker-c"><div class="s-kicker-line"></div><span class="s-kicker-text">Contacto</span></div>
             <h2 class="s-title">¿Listo para dar el siguiente paso?</h2>
             <div class="garnet-rule garnet-rule-c"></div>
-            <p class="s-sub" style="margin:0 auto;text-align:center">Una sesión estratégica de 45 minutos para entender tu reto y explorar si podemos trabajar juntos. Sin compromiso.</p>
+            <p class="s-sub s-sub-c">Una sesión estratégica de 45 minutos para entender tu reto y explorar si podemos trabajar juntos. Sin compromiso.</p>
         </div>
         <div class="contact-grid">
             <div class="fi">
-                <img src="https://www.lauramarquina.com/Images/_MG_4495-Editar.jpg" alt="Laura Marquina" class="contact-photo" style="margin-top:0; height:100%; min-height:520px; width:100%; object-fit:cover; object-position:center 15%;">
+                <img src="Images/_MG_4495-Editar.jpg" alt="Laura Marquina" class="contact-photo contact-photo-full" loading="lazy" width="600" height="800">
             </div>
             <div class="fi">
-                <form class="contact-form" onsubmit="handleForm(event)">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="hidden" name="_subject" value="Nueva consulta desde lauramarquina.com">
                     <div class="form-row">
-                        <div class="fg" style="margin-bottom:0"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
-                        <div class="fg" style="margin-bottom:0"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa"></div>
+                        <div class="fg"><label for="f-nombre">Nombre</label><input id="f-nombre" type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"></div>
+                        <div class="fg"><label for="f-empresa">Empresa</label><input id="f-empresa" type="text" name="empresa" placeholder="Nombre de tu empresa" autocomplete="organization"></div>
                     </div>
                     <div class="form-row">
-                        <div class="fg" style="margin-bottom:0"><label>Email</label><input type="email" placeholder="tu@empresa.com" required></div>
-                        <div class="fg" style="margin-bottom:0"><label>Teléfono</label><input type="tel" placeholder="+34 6XX XXX XXX"></div>
+                        <div class="fg"><label for="f-email">Email</label><input id="f-email" type="email" name="email" placeholder="tu@empresa.com" required autocomplete="email"></div>
+                        <div class="fg"><label for="f-tel">Teléfono</label><input id="f-tel" type="tel" name="telefono" placeholder="+34 6XX XXX XXX" autocomplete="tel"></div>
                     </div>
                     <div class="fg">
-                        <label>¿Qué servicio te interesa?</label>
-                        <select>
+                        <label for="f-servicio">¿Qué servicio te interesa?</label>
+                        <select id="f-servicio" name="servicio">
                             <option value="">Selecciona una opción</option>
-                            <option>Coaching de Equipos</option>
-                            <option>Coaching Ejecutivo</option>
-                            <option>Workshop / Formación In-Company</option>
-                            <option>Dinámica de Alto Impacto (Firewalking)</option>
-                            <option>Programa SIMURG (Scaleups)</option>
-                            <option>No lo sé aún — quiero una sesión exploratoria</option>
+                            <option value="Coaching de Equipos">Coaching de Equipos</option>
+                            <option value="Coaching Ejecutivo">Coaching Ejecutivo</option>
+                            <option value="Workshop / Formación In-Company">Workshop / Formación In-Company</option>
+                            <option value="Dinámica de Alto Impacto (Firewalking)">Dinámica de Alto Impacto (Firewalking)</option>
+                            <option value="Programa SIMURG (Scaleups)">Programa SIMURG (Scaleups)</option>
+                            <option value="Sesión exploratoria">No lo sé aún — quiero una sesión exploratoria</option>
                         </select>
                     </div>
                     <div class="fg">
-                        <label>Cuéntame tu reto</label>
-                        <textarea placeholder="¿Cuál es la situación de tu equipo hoy? ¿Qué quieres conseguir?"></textarea>
+                        <label for="f-reto">Cuéntame tu reto</label>
+                        <textarea id="f-reto" name="reto" placeholder="¿Cuál es la situación de tu equipo hoy? ¿Qué quieres conseguir?"></textarea>
                     </div>
                     <button type="submit" class="form-submit" id="formBtn">Solicitar sesión estratégica gratuita</button>
                     <p class="form-note">Sin compromiso · Respondo en menos de 24h</p>
@@ -821,8 +872,8 @@
         <div class="footer-logo">
             <div class="logo-mark">LM</div>
             <div>
-                <div class="logo-name" style="color:#fff">Laura Marquina</div>
-                <div class="logo-sub" style="color:var(--gold)">Leadership &amp; Performance Coach</div>
+                <div class="logo-name">Laura Marquina</div>
+                <div class="logo-sub">Leadership &amp; Performance Coach</div>
             </div>
         </div>
         <ul class="footer-nav">
@@ -843,27 +894,48 @@
 </div>
 
 <script>
+    /* ─── NAV / SCROLL ─── */
     const nav = document.getElementById('navbar');
     const fc  = document.getElementById('floatCta');
+    const hbg = document.getElementById('hbg');
+    const navLinks = document.getElementById('navLinks');
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const navAnchors = Array.from(document.querySelectorAll('.nav-links a'));
 
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-        const s = window.scrollY > 80;
-        nav.classList.toggle('scrolled', s);
-        fc.classList.toggle('show', s);
-        let cur = '';
-        document.querySelectorAll('section[id]').forEach(sec => {
-            if (window.scrollY >= sec.offsetTop - 110) cur = sec.id;
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            const sy = window.scrollY;
+            nav.classList.toggle('scrolled', sy > 80);
+            fc.classList.toggle('show', sy > 80);
+            let cur = '';
+            for (const sec of sections) {
+                if (sy >= sec.offsetTop - 110) cur = sec.id;
+            }
+            for (const a of navAnchors) {
+                a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--garnet)' : '';
+            }
+            scrollTicking = false;
         });
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.style.color = (a.getAttribute('href') === `#${cur}`) ? 'var(--garnet)' : '';
-        });
+    }, { passive: true });
+
+    /* ─── HAMBURGER ─── */
+    hbg.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hbg.setAttribute('aria-expanded', String(isOpen));
+        hbg.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
     });
+    for (const a of navAnchors) {
+        a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hbg.setAttribute('aria-expanded', 'false');
+            hbg.setAttribute('aria-label', 'Abrir menú de navegación');
+        });
+    }
 
-    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
-    document.querySelectorAll('.nav-links a').forEach(a =>
-        a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
-    );
-
+    /* ─── SCROLL ANIMATIONS ─── */
     const obs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
             if (e.isIntersecting) {
@@ -874,12 +946,38 @@
     }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 
-    function handleForm(e) {
-        e.preventDefault();
-        const btn = document.getElementById('formBtn');
-        btn.textContent = '✓ Mensaje enviado — Te contacto en menos de 24h';
-        btn.style.background = '#1a5c3a';
-        btn.disabled = true;
+    /* ─── FORMULARIO DE CONTACTO ─── */
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('formBtn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Enviando…';
+            btn.disabled = true;
+            try {
+                const res = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    btn.textContent = '✓ Mensaje enviado — Te contacto en menos de 24h';
+                    btn.style.background = '#1a5c3a';
+                    contactForm.reset();
+                } else {
+                    throw new Error('server');
+                }
+            } catch {
+                btn.textContent = 'Error al enviar — Inténtalo de nuevo';
+                btn.style.background = '#c0392b';
+                btn.disabled = false;
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                }, 4000);
+            }
+        });
     }
 </script>
 </body>
