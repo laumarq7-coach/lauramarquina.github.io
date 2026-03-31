@@ -1,0 +1,73 @@
+# ══════════════════════════════════════════════
+#  Laura Marquina Web — Apache Configuration
+#  Dominio: www.lauramarquina.com
+# ══════════════════════════════════════════════
+
+Options -Indexes
+
+# ─── HTTPS + WWW REDIRECT ───────────────────
+RewriteEngine On
+
+# Redirect HTTP → HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect lauramarquina.com → www.lauramarquina.com
+RewriteCond %{HTTP_HOST} ^lauramarquina\.com$ [NC]
+RewriteRule ^ https://www.lauramarquina.com%{REQUEST_URI} [L,R=301]
+
+# ─── SECURITY HEADERS ───────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.lauramarquina.com; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;"
+    # Elimina la cabecera que revela tecnología del servidor
+    Header always unset X-Powered-By
+    Header always unset Server
+</IfModule>
+
+# ─── COMPRESIÓN GZIP ────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ─── CACHÉ DE ASSETS ESTÁTICOS ──────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Imágenes — 1 año
+    ExpiresByType image/jpeg  "access plus 1 year"
+    ExpiresByType image/png   "access plus 1 year"
+    ExpiresByType image/webp  "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    # CSS y JS — 1 mes
+    ExpiresByType text/css              "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    # Fuentes — 1 año
+    ExpiresByType font/woff2  "access plus 1 year"
+    ExpiresByType font/woff   "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpg|jpeg|png|webp|svg|woff2|woff)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    <FilesMatch "\.html$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ─── PROTEGER ARCHIVOS SENSIBLES ────────────
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ─── PÁGINA DE ERROR 404 ────────────────────
+ErrorDocument 404 /index.html
